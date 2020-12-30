@@ -3,6 +3,10 @@ output: github_document
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
+```{r setup, include=FALSE}
+options(scipen=999)
+library(Rbduk)
+```
 
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
@@ -33,8 +37,6 @@ devtools::install.github("NAME/Rbduk")
 Within GCP, large numbers (eg UPRNs) are stored are 64-bit integers. R, on the whole, does not like 64-bit integer, and whilst it can cope, it's easier to read in these columns are numeric, or convert them to numeric within R. To see if an object is currently a 64-bit integer, this function can be used.
 
 ```{r is_integer64}
-library(Rbduk)
-
 is_integer64(100)
 
 is_integer64("x")
@@ -46,8 +48,6 @@ is_integer64("x")
 This function takes a postcode in any format and any case, and converts it into pretty format XX(X)(X)(Y)XXX, where X is the postcode, and Y is the specified seperator, which is a space by default. The case can also be specified, and is upper case by default.
 
 ```{r pretty_postcode}
-library(Rbduk)
-
 pretty_postcode("SW1a2nP")
 
 pretty_postcode("SW1a2nP", sep="")
@@ -62,9 +62,16 @@ pretty_postcode("SW1a2nP", sep=".", uppercase=FALSE)
 
 This function takes a string and returns TRUE or FALSE depedent on whether the string is in a valid UK postcode format or not. This may contain one space and still be valid. This does not indicate whether a postcode is an existing postcode, but that is has the format of one.
 
-```{r is_postcode}
-library(Rbduk)
+The following demonstrates valid postcodes and invalid postcodes:
 
+```{r is_postcode_valid}
+is_postcode("SW1a2nP")
+
+is_postcode("SW1a 2nP")
+
+```
+
+```{r is_postcode_invalid}
 is_postcode("SW1a2nP")
 
 is_postcode("SW1a 2nP")
@@ -80,5 +87,42 @@ is_postcode("Sw1a  2np")
 is_postcode("000000")
 
 is_postcode("XXXXXX")
+
+```
+## is_uprn()
+
+This function takes a numeric or character vector and returns TRUE or FALSE depedent on whether it is in a valid UPRN format (all numeric, between 1 and 12 characters). It will also flag as a message any UPRNs that end 0000, as a common conversion error caused by scientific notation and reading/writing from excel can cause genuine UPRNs to end in a number of zeros, meaning they are no longer genuine. One or two of these messages is acceptable, but many indicates that this error has occured and that the UPRNs should be checked thoroughly.
+
+The following demonstrates valid and invalid UPRNs:
+
+```{r is_uprn_valid}
+is_uprn(1)
+
+is_uprn(999999999999)
+
+is_uprn("1")
+
+is_uprn("999999999999")
+
+```
+
+```{r is_uprn_invalid}
+is_uprn(9999999999999)
+
+is_uprn("9999999999999")
+
+is_uprn("")
+
+is_uprn("ABC")
+
+is_uprn("1,")
+
+is_uprn(111.999)
+
+is_uprn("111.999")
+
+is_uprn("111-999")
+
+is_uprn("111 999")
 
 ```

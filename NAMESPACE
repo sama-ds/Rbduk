@@ -2,4 +2,5 @@
 
 export(is_integer64)
 export(is_postcode)
+export(is_uprn)
 export(pretty_postcode)

@@ -129,3 +129,7 @@ load_all()
 document()
 install()
 #Update readme to reflect addition
+use_r("is_uprn")
+use_test("is_uprn")
+document()
+install()
