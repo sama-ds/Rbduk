@@ -100,4 +100,21 @@ use_package("stringr")
 #Now we add a second function
 
 #Initiate a new .R with use_r
+#In this .R window that loads we add the doccuemntation and the function
 use_r("pretty_postcode")
+
+load_all()
+
+pretty_postcode("SW1a2nP")
+
+#Run document() to add it to the namespace
+document()
+
+#If we had access, we would use use_github() here- instead we use google source repos
+#We must create a readme for those using the package
+#To edit this, edit this .rmd file, that renders the .md file (not the .md file itself)
+use_readme_rmd()
+
+check()
+
+install()
