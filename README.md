@@ -19,7 +19,7 @@ You can install the released version of Rbduk from
 devtools::install.github("NAME/Rbduk")
 ```
 
-## is\_integer64
+## is\_integer64()
 
 Within GCP, large numbers (eg UPRNs) are stored are 64-bit integers. R,
 on the whole, does not like 64-bit integer, and whilst it can cope, it’s
@@ -37,7 +37,7 @@ is_integer64("x")
 #> [1] FALSE
 ```
 
-## pretty\_postcode
+## pretty\_postcode()
 
 This function allows us to enter a postcode in any format and any case,
 and convert it into pretty format XX(X)(X)(Y)XXX, where X is the
@@ -58,4 +58,39 @@ pretty_postcode("SW1a2nP", sep=".")
 
 pretty_postcode("SW1a2nP", sep=".", uppercase=FALSE)
 #> [1] "sw1a.2np"
+```
+
+## is\_postcode()
+
+This function takes a string and returns TRUE or FALSE depedent on
+whether the string is in a valid UK postcode format or not. This may
+contain one space and still be valid. This does not indicate whether a
+postcode is an existing postcode, but that is has the format of one.
+
+``` r
+library(Rbduk)
+
+is_postcode("SW1a2nP")
+#> [1] TRUE
+
+is_postcode("SW1a 2nP")
+#> [1] TRUE
+
+is_postcode("S 2NP")
+#> [1] FALSE
+
+is_postcode("Sw1a.2np")
+#> [1] FALSE
+
+is_postcode("Sw1a2npX")
+#> [1] FALSE
+
+is_postcode("Sw1a  2np")
+#> [1] FALSE
+
+is_postcode("000000")
+#> [1] FALSE
+
+is_postcode("XXXXXX")
+#> [1] FALSE
 ```

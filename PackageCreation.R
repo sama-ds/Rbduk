@@ -117,4 +117,15 @@ use_readme_rmd()
 
 check()
 
+load_all()
+
+use_test("pretty_postcode")
+
+test()
+
+#Add more functions
+use_r("is_postcode")
+load_all()
+document()
 install()
+#Update readme to reflect addition
