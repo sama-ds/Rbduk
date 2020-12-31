@@ -12,12 +12,16 @@ repeatable functions for BDUK-specific R work.
 
 ## Installation
 
-You can install the released version of Rbduk from
-[sam.atkin@dcms.gov.uk](sam.atkin@dcms.gov.uk) with:
+You can install the released version of Rbduk by pulling this repository
+onto your machine, opening the project, and running:
 
 ``` r
-devtools::install.github("NAME/Rbduk")
+devtools::install()
 ```
+
+For any additional support, to contribute, or to suggest things you
+would like to see, please contact
+[sam.atkin@dcms.gov.uk](sam.atkin@dcms.gov.uk).
 
 ## is\_integer64()
 
@@ -74,27 +78,27 @@ is_postcode("SW1a 2nP")
 ```
 
 ``` r
-is_postcode("SW1a2nP")
-#> [1] TRUE
-
-is_postcode("SW1a 2nP")
-#> [1] TRUE
-
+#Too short
 is_postcode("S 2NP")
 #> [1] FALSE
 
+#Contains punctuation
 is_postcode("Sw1a.2np")
 #> [1] FALSE
 
+#Too long
 is_postcode("Sw1a2npX")
 #> [1] FALSE
 
+#Contains too many spaces
 is_postcode("Sw1a  2np")
 #> [1] FALSE
 
+#Not valid number/letter combiantion
 is_postcode("000000")
 #> [1] FALSE
 
+#Not valid number/letter combiantion
 is_postcode("XXXXXX")
 #> [1] FALSE
 ```
@@ -127,30 +131,39 @@ is_uprn("999999999999")
 ```
 
 ``` r
+#Too long
 is_uprn(9999999999999)
 #> [1] FALSE
 
+#Too long
 is_uprn("9999999999999")
 #> [1] FALSE
 
+#Empty
 is_uprn("")
 #> [1] FALSE
 
+#Letters
 is_uprn("ABC")
 #> [1] FALSE
 
+#Contains trailing characters
 is_uprn("1,")
 #> [1] FALSE
 
+#Not an integer
 is_uprn(111.999)
 #> [1] FALSE
 
+#Not an integer
 is_uprn("111.999")
 #> [1] FALSE
 
+#Contains punctuation
 is_uprn("111-999")
 #> [1] FALSE
 
+#Contains punctuation
 is_uprn("111 999")
 #> [1] FALSE
 ```
@@ -250,4 +263,17 @@ bduk_bq(
 #>   pcds  Rurality
 #>   <chr> <chr>   
 #> 1 pcds  Rurality
+```
+
+``` r
+sql="SELECT pcds,Rurality FROM `dcms-datalake-staging.GEO_ONS.ONS_RURALITY` LIMIT 1 "
+
+#No key in this directory
+setwd("/home/dcms/")
+
+bduk_bq(
+      sql=sql,
+      project="dcms-datalake-staging"
+    )
+#> There is no json key saved in this directory. Please copy the file 'dcms-datalake-staging_bigquery.json' into the project or directory you are working within. The file can likely be found in ~/home/keys. If you have not made this folder, please contact the BDUK data and modelling team for additional support.
 ```

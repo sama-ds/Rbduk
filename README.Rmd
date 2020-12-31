@@ -26,11 +26,12 @@ The goal of Rbduk is to provide BDUK analysts with a centralised set of repeatab
 
 ## Installation
 
-You can install the released version of Rbduk from [sam.atkin@dcms.gov.uk](sam.atkin@dcms.gov.uk) with:
+You can install the released version of Rbduk by pulling this repository onto your machine, opening the project, and running:
 
 ``` r
-devtools::install.github("NAME/Rbduk")
+devtools::install()
 ```
+For any additional support, to contribute, or to suggest things you would like to see, please contact [sam.atkin@dcms.gov.uk](sam.atkin@dcms.gov.uk).
 
 ## is_integer64()
 
@@ -72,20 +73,22 @@ is_postcode("SW1a 2nP")
 ```
 
 ```{r is_postcode_invalid}
-is_postcode("SW1a2nP")
-
-is_postcode("SW1a 2nP")
-
+#Too short
 is_postcode("S 2NP")
 
+#Contains punctuation
 is_postcode("Sw1a.2np")
 
+#Too long
 is_postcode("Sw1a2npX")
 
+#Contains too many spaces
 is_postcode("Sw1a  2np")
 
+#Not valid number/letter combiantion
 is_postcode("000000")
 
+#Not valid number/letter combiantion
 is_postcode("XXXXXX")
 
 ```
@@ -107,22 +110,31 @@ is_uprn("999999999999")
 ```
 
 ```{r is_uprn_invalid}
+#Too long
 is_uprn(9999999999999)
 
+#Too long
 is_uprn("9999999999999")
 
+#Empty
 is_uprn("")
 
+#Letters
 is_uprn("ABC")
 
+#Contains trailing characters
 is_uprn("1,")
 
+#Not an integer
 is_uprn(111.999)
 
+#Not an integer
 is_uprn("111.999")
 
+#Contains punctuation
 is_uprn("111-999")
 
+#Contains punctuation
 is_uprn("111 999")
 
 ```
@@ -166,7 +178,7 @@ all.equal("b" %!in% c("a","c"), "b" %notin% c("a","c"), !"b" %!in% c("a","c"))
 
 THis function provides a shorthand for writing queries directly to bigquery within R. The input to this function must be a valid query, and the name of the project you are quering from within GCP. To run such a query a .json billing key must be stored on your machine. By default, this function will assume the key is the project name with "_bigquery.json" at the end. If this is not the case, the key name will need to be specified. By default, this function will assume the key is stored in the current working directory or project. If this is not the case, the key must be specified. This function also sets 'bigint' to integer64, allowing R to load in integer64 numbers (eg. UPRNs), but it is recommended that you use 'CAST(VARIABLE as NUMERIC) as VARIABLE' when running your queries, or converting these to numeric once they have been read in.
 
-```{r bduk_bq}
+```{r bduk_bq_valid}
 sql="SELECT pcds,Rurality FROM `dcms-datalake-staging.GEO_ONS.ONS_RURALITY` LIMIT 1 "
 
 setwd("/home/dcms/keys")
@@ -188,5 +200,17 @@ bduk_bq(
       keypath="/home/dcms/keys"
     )
 
+```
+
+```{r bduk_bq_invalid}
+sql="SELECT pcds,Rurality FROM `dcms-datalake-staging.GEO_ONS.ONS_RURALITY` LIMIT 1 "
+
+#No key in this directory
+setwd("/home/dcms/")
+
+bduk_bq(
+      sql=sql,
+      project="dcms-datalake-staging"
+    )
 
 ```
