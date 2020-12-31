@@ -126,3 +126,42 @@ is_uprn("111-999")
 is_uprn("111 999")
 
 ```
+
+## %notin% and %!in%
+
+These functions serve the same purpose, and that is to give a more readable version of the opposite of `%in%`. They output the opposite logical response that `%in%` would provide.
+
+```{r notin_true}
+
+2 %!in% c(1,3)
+
+2 %notin% c(1,3)
+
+"b" %!in% c("a","c")
+
+"b" %notin% c("a","c")
+
+```
+
+```{r notin_false}
+
+2 %!in% c(1,2,3)
+
+2 %notin% c(1,2,3)
+
+"b" %!in% c("a","b","c")
+
+"b" %notin% c("a","b","c")
+
+```
+
+```{r notin_proof}
+
+all.equal(2 %!in% c(1,3), 2 %notin% c(1,3), !2 %in% c(1,3))
+
+all.equal("b" %!in% c("a","c"), "b" %notin% c("a","c"), !"b" %!in% c("a","c"))
+
+```
+## multiplot()
+
+Multiplot allows an easy way of plotting

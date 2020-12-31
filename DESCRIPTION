@@ -16,4 +16,6 @@ Suggests:
     testthat
 Imports: 
     dplyr,
-    stringr
+    stringr,
+    grid,
+    ggplot2

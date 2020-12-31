@@ -154,3 +154,48 @@ is_uprn("111-999")
 is_uprn("111 999")
 #> [1] FALSE
 ```
+
+## %notin% and %\!in%
+
+These functions serve the same purpose, and that is to give a more
+readable version of the opposite of `%in%`. They output the opposite
+logical response that `%in%` would provide.
+
+``` r
+
+2 %!in% c(1,3)
+#> [1] TRUE
+
+2 %notin% c(1,3)
+#> [1] TRUE
+
+"b" %!in% c("a","c")
+#> [1] TRUE
+
+"b" %notin% c("a","c")
+#> [1] TRUE
+```
+
+``` r
+
+2 %!in% c(1,2,3)
+#> [1] FALSE
+
+2 %notin% c(1,2,3)
+#> [1] FALSE
+
+"b" %!in% c("a","b","c")
+#> [1] FALSE
+
+"b" %notin% c("a","b","c")
+#> [1] FALSE
+```
+
+``` r
+
+all.equal(2 %!in% c(1,3), 2 %notin% c(1,3), !2 %in% c(1,3))
+#> [1] TRUE
+
+all.equal("b" %!in% c("a","c"), "b" %notin% c("a","c"), !"b" %!in% c("a","c"))
+#> [1] TRUE
+```
