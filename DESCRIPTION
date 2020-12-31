@@ -18,4 +18,5 @@ Imports:
     dplyr,
     stringr,
     grid,
-    ggplot2
+    ggplot2,
+    bigrquery

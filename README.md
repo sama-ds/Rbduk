@@ -199,3 +199,55 @@ all.equal(2 %!in% c(1,3), 2 %notin% c(1,3), !2 %in% c(1,3))
 all.equal("b" %!in% c("a","c"), "b" %notin% c("a","c"), !"b" %!in% c("a","c"))
 #> [1] TRUE
 ```
+
+## bduk\_bq()
+
+THis function provides a shorthand for writing queries directly to
+bigquery within R. The input to this function must be a valid query, and
+the name of the project you are quering from within GCP. To run such a
+query a .json billing key must be stored on your machine. By default,
+this function will assume the key is the project name with
+"\_bigquery.json" at the end. If this is not the case, the key name will
+need to be specified. By default, this function will assume the key is
+stored in the current working directory or project. If this is not the
+case, the key must be specified. This function also sets ‘bigint’ to
+integer64, allowing R to load in integer64 numbers (eg. UPRNs), but it
+is recommended that you use ‘CAST(VARIABLE as NUMERIC) as VARIABLE’ when
+running your queries, or converting these to numeric once they have been
+read
+in.
+
+``` r
+sql="SELECT pcds,Rurality FROM `dcms-datalake-staging.GEO_ONS.ONS_RURALITY` LIMIT 1 "
+
+setwd("/home/dcms/keys")
+
+bduk_bq(
+      sql=sql,
+      project="dcms-datalake-staging"
+    )
+#> # A tibble: 1 x 2
+#>   pcds  Rurality
+#>   <chr> <chr>   
+#> 1 pcds  Rurality
+
+bduk_bq(
+      sql=sql,
+      project="dcms-datalake-staging",
+      key="dcms-datalake-staging_bigquery.json"
+    )
+#> # A tibble: 1 x 2
+#>   pcds  Rurality
+#>   <chr> <chr>   
+#> 1 pcds  Rurality
+
+bduk_bq(
+      sql=sql,
+      project="dcms-datalake-staging",
+      keypath="/home/dcms/keys"
+    )
+#> # A tibble: 1 x 2
+#>   pcds  Rurality
+#>   <chr> <chr>   
+#> 1 pcds  Rurality
+```
