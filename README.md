@@ -12,16 +12,27 @@ repeatable functions for BDUK-specific R work.
 
 ## Installation
 
-You can install the released version of Rbduk by pulling this repository
-onto your machine, opening the project, and running:
+Ordinarily, a package would be installed either from a communal file
+store, or from a git repository. As our VM’s do not connect to the T://
+drive that we share, and packages cannot be installed from a Google
+Source Repository, we have to do this manually:
 
-``` r
-devtools::install()
-```
+1)  Ensure the current working directory is /home/dcms by running
+    `setwd("/home/dcms")` in the console.
+2)  Within your VM, go to the “Files” pane and click upload.
+3)  Navigate to the T:// drive, and select the file **Rbduk.tar.gz**.
+4)  Open the terminal tab (next to the console tab) and run `R CMD
+    INSTALL Rbduk.taz.gz`.
+
+The package should now be installed, and to load it use `library(Rbduk)`
+as you would any other package.
 
 For any additional support, to contribute, or to suggest things you
 would like to see, please contact
 [sam.atkin@dcms.gov.uk](sam.atkin@dcms.gov.uk).
+
+**Do not push any code into the repository unless it has been quality
+assured first.**
 
 ## General functions
 
