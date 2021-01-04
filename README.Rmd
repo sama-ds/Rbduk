@@ -33,7 +33,9 @@ devtools::install()
 ```
 For any additional support, to contribute, or to suggest things you would like to see, please contact [sam.atkin@dcms.gov.uk](sam.atkin@dcms.gov.uk).
 
-## is_integer64()
+## General functions
+
+### is_integer64()
 
 Within GCP, large numbers (eg UPRNs) are stored are 64-bit integers. R, on the whole, does not like 64-bit integer, and whilst it can cope, it's easier to read in these columns are numeric, or convert them to numeric within R. To see if an object is currently a 64-bit integer, this function can be used.
 
@@ -44,7 +46,7 @@ is_integer64("x")
 
 ```
 
-## pretty_postcode()
+### pretty_postcode()
 
 This function takes a postcode in any format and any case, and converts it into pretty format XX(X)(X)(Y)XXX, where X is the postcode, and Y is the specified seperator, which is a space by default. The case can also be specified, and is upper case by default.
 
@@ -59,7 +61,7 @@ pretty_postcode("SW1a2nP", sep=".", uppercase=FALSE)
 
 ```
 
-## is_postcode()
+### is_postcode()
 
 This function takes a string and returns TRUE or FALSE depedent on whether the string is in a valid UK postcode format or not. This may contain one space and still be valid. This does not indicate whether a postcode is an existing postcode, but that is has the format of one.
 
@@ -92,7 +94,8 @@ is_postcode("000000")
 is_postcode("XXXXXX")
 
 ```
-## is_uprn()
+
+### is_uprn()
 
 This function takes a numeric or character vector and returns TRUE or FALSE depedent on whether it is in a valid UPRN format (all numeric, between 1 and 12 characters). It will also flag as a message any UPRNs that end 0000, as a common conversion error caused by scientific notation and reading/writing from excel can cause genuine UPRNs to end in a number of zeros, meaning they are no longer genuine. One or two of these messages is acceptable, but many indicates that this error has occured and that the UPRNs should be checked thoroughly.
 
@@ -139,7 +142,7 @@ is_uprn("111 999")
 
 ```
 
-## %notin% and %!in%
+### %notin% and %!in%
 
 These functions serve the same purpose, and that is to give a more readable version of the opposite of `%in%`. They output the opposite logical response that `%in%` would provide.
 
@@ -174,7 +177,10 @@ all.equal(2 %!in% c(1,3), 2 %notin% c(1,3), !2 %in% c(1,3))
 all.equal("b" %!in% c("a","c"), "b" %notin% c("a","c"), !"b" %!in% c("a","c"))
 
 ```
-## bduk_bq()
+
+## GCP functions
+
+### bduk_bq()
 
 THis function provides a shorthand for writing queries directly to bigquery within R. The input to this function must be a valid query, and the name of the project you are quering from within GCP. To run such a query a .json billing key must be stored on your machine. By default, this function will assume the key is the project name with "_bigquery.json" at the end. If this is not the case, the key name will need to be specified. By default, this function will assume the key is stored in the current working directory or project. If this is not the case, the key must be specified. This function also sets 'bigint' to integer64, allowing R to load in integer64 numbers (eg. UPRNs), but it is recommended that you use 'CAST(VARIABLE as NUMERIC) as VARIABLE' when running your queries, or converting these to numeric once they have been read in.
 
@@ -215,7 +221,9 @@ bduk_bq(
 
 ```
 
-## geojson_to_sf()
+## Spatial function
+
+### geojson_to_sf()
 
 Data in BigQuery is frequently stored in geojson format. This function provides a cimple shorthand to input a data frame or tibble that contains a geojson column (eg. a table read from BigQuery) as easily convert it to a simple feature. The inputs to this function are the data frame or tibble, and the column name of the geojson column as a string.
 
@@ -231,7 +239,7 @@ geojson_to_sf(
       )
 ```
 
-## make_sf()
+### make_sf()
 
 This function provides an easy shorthand to take any dataframe with coordinate columns, and convert it into a simple feature object. The inputs to this function are the data frame or tibble, the x and y column names, both as strings, and the coordinate system number. Coordinate reference system codes can be found at [https://spatialreference.org/](https://spatialreference.org/). This mostly serves as a wrapped to sf::st_as_sf(), but the defaults for this are set as latitude and longitude. Columns containing the string "lon" or "lat" in any case being used as the x_colname and y_colname respectively, and the coordinate reference system set to 4326. If multiple columns contain these strings, the function will return the data frame unchanged and produce an error message prompting you to specify the column names manually.
 
@@ -262,7 +270,9 @@ make_sf(
     )
 ```
 
-## clearGroups()
+## Shiny functions
+
+### clearGroups()
 
 A function to clear all groups from a leaflet object from within a shiny application. The prevents having to run `clearGroup("groupname")` for every group. The input to this is the name of the map, and then the groups wanting to be cleared as comma seperated strings.
 
@@ -302,5 +312,42 @@ server<-function(input,output,session){
 }
 
 shinyApp(ui, server)
+```
+
+### radioTooltip()
+
+By default, shiny and shinyBS together allow us to add popup tooltips to shiny buttons and input fields. However, this tooltip will apply to all parts of the input fiels. For radio buttons and groups of checkboxes, this can be problematic. This function allows us to add a tooltip to specific parts of a radio button.
+
+```
+library(shiny)
+library(leaflet)
+library(dplyr)
+
+ui<-fluidPage(
+  fluidRow(
+    radioButtons(
+      "radio",
+      "Radio Button",
+      choices=c("Tooltip shows on mouseover here",
+                "Tooltip shows on mouseover here as well",
+                "Tooltip does not show on mouseover here")
+                ),
+    radioTooltip(
+      id="radio",
+      title="Tooltip message appears like this",
+      choice=c(
+        "Tooltip shows on mouseover here",
+        "Tooltip shows on mouseover here as well"
+      ),
+      placement="right",
+      trigger="hover"
+    )
+  )
+)
+
+server<-function(input,output,session){}
+
+shinyApp(ui, server)
+
 ```
 

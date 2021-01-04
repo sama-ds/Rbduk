@@ -2,7 +2,7 @@
 #'
 #' @param map a string containing the name of the map
 #' @param ... a comma seperated set of strings that contain the group names to clear
-
+#' See README for example useage.
 
 clearGroups<-function(map,...){
   Groups<-c(...)

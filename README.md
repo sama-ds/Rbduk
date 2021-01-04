@@ -23,7 +23,9 @@ For any additional support, to contribute, or to suggest things you
 would like to see, please contact
 [sam.atkin@dcms.gov.uk](sam.atkin@dcms.gov.uk).
 
-## is\_integer64()
+## General functions
+
+### is\_integer64()
 
 Within GCP, large numbers (eg UPRNs) are stored are 64-bit integers. R,
 on the whole, does not like 64-bit integer, and whilst it can cope, it’s
@@ -39,7 +41,7 @@ is_integer64("x")
 #> [1] FALSE
 ```
 
-## pretty\_postcode()
+### pretty\_postcode()
 
 This function takes a postcode in any format and any case, and converts
 it into pretty format XX(X)(X)(Y)XXX, where X is the postcode, and Y is
@@ -60,7 +62,7 @@ pretty_postcode("SW1a2nP", sep=".", uppercase=FALSE)
 #> [1] "sw1a.2np"
 ```
 
-## is\_postcode()
+### is\_postcode()
 
 This function takes a string and returns TRUE or FALSE depedent on
 whether the string is in a valid UK postcode format or not. This may
@@ -103,7 +105,7 @@ is_postcode("XXXXXX")
 #> [1] FALSE
 ```
 
-## is\_uprn()
+### is\_uprn()
 
 This function takes a numeric or character vector and returns TRUE or
 FALSE depedent on whether it is in a valid UPRN format (all numeric,
@@ -168,7 +170,7 @@ is_uprn("111 999")
 #> [1] FALSE
 ```
 
-## %notin% and %\!in%
+### %notin% and %\!in%
 
 These functions serve the same purpose, and that is to give a more
 readable version of the opposite of `%in%`. They output the opposite
@@ -213,7 +215,9 @@ all.equal("b" %!in% c("a","c"), "b" %notin% c("a","c"), !"b" %!in% c("a","c"))
 #> [1] TRUE
 ```
 
-## bduk\_bq()
+## GCP functions
+
+### bduk\_bq()
 
 THis function provides a shorthand for writing queries directly to
 bigquery within R. The input to this function must be a valid query, and
@@ -278,7 +282,9 @@ bduk_bq(
 #> There is no json key saved in this directory. Please copy the file 'dcms-datalake-staging_bigquery.json' into the project or directory you are working within. The file can likely be found in ~/home/keys. If you have not made this folder, please contact the BDUK data and modelling team for additional support.
 ```
 
-## geojson\_to\_sf()
+## Spatial function
+
+### geojson\_to\_sf()
 
 Data in BigQuery is frequently stored in geojson format. This function
 provides a cimple shorthand to input a data frame or tibble that
@@ -311,7 +317,7 @@ geojson_to_sf(
 #> #   Shape__Len <dbl>
 ```
 
-## make\_sf()
+### make\_sf()
 
 This function provides an easy shorthand to take any dataframe with
 coordinate columns, and convert it into a simple feature object. The
@@ -376,7 +382,9 @@ make_sf(
 #> 3           3          14       53
 ```
 
-## clearGroups()
+## Shiny functions
+
+### clearGroups()
 
 A function to clear all groups from a leaflet object from within a shiny
 application. The prevents having to run `clearGroup("groupname")` for
@@ -416,5 +424,43 @@ groups wanting to be cleared as comma seperated strings.
         clearGroups(map="mymap","Group 1","Group 2")
       })
     }
+    
+    shinyApp(ui, server)
+
+### radioTooltip()
+
+By default, shiny and shinyBS together allow us to add popup tooltips to
+shiny buttons and input fields. However, this tooltip will apply to all
+parts of the input fiels. For radio buttons and groups of checkboxes,
+this can be problematic. This function allows us to add a tooltip to
+specific parts of a radio button.
+
+    library(shiny)
+    library(leaflet)
+    library(dplyr)
+    
+    ui<-fluidPage(
+      fluidRow(
+        radioButtons(
+          "radio",
+          "Radio Button",
+          choices=c("Tooltip shows on mouseover here",
+                    "Tooltip shows on mouseover here as well",
+                    "Tooltip does not show on mouseover here")
+                    ),
+        radioTooltip(
+          id="radio",
+          title="Tooltip message appears like this",
+          choice=c(
+            "Tooltip shows on mouseover here",
+            "Tooltip shows on mouseover here as well"
+          ),
+          placement="right",
+          trigger="hover"
+        )
+      )
+    )
+    
+    server<-function(input,output,session){}
     
     shinyApp(ui, server)
