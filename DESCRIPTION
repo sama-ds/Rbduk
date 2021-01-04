@@ -19,4 +19,6 @@ Imports:
     stringr,
     grid,
     ggplot2,
-    bigrquery
+    bigrquery,
+    geojsonsf,
+    sf

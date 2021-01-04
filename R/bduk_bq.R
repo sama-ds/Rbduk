@@ -19,7 +19,7 @@
 #'  sql="SELECT pcds,Rurality FROM `dcms-datalake-staging.GEO_ONS.ONS_RURALITY` LIMIT 1 ",
 #'  project="dcms-datalake-staging",
 #'  key="dcms-datalake-staging_bigquery.json",
-#'  keypath="~/keys"
+#'  keypath="/home/dcms/keys"
 #')
 
 bduk_bq <-function(sql, project, key=NULL, keypath=NULL){

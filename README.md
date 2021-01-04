@@ -277,3 +277,101 @@ bduk_bq(
     )
 #> There is no json key saved in this directory. Please copy the file 'dcms-datalake-staging_bigquery.json' into the project or directory you are working within. The file can likely be found in ~/home/keys. If you have not made this folder, please contact the BDUK data and modelling team for additional support.
 ```
+
+## geojson\_to\_sf()
+
+Data in BigQuery is frequently stored in geojson format. This function
+provides a cimple shorthand to input a data frame or tibble that
+contains a geojson column (eg. a table read from BigQuery) as easily
+convert it to a simple feature. The inputs to this function are the data
+frame or tibble, and the column name of the geojson column as a string.
+
+``` r
+bq_table<-bduk_bq(
+          sql="SELECT * FROM dcms-datalake-staging.GEO_ONS.shp_LA LIMIT 1" ,
+          project="dcms-datalake-staging",
+          keypath="/home/dcms/keys")
+
+geojson_to_sf(
+        data=bq_table,
+        geojson_colname = "geom"
+      )
+#> Simple feature collection with 1 feature and 10 fields
+#> geometry type:  POLYGON
+#> dimension:      XY
+#> bbox:           xmin: 440052.7 ymin: 525456.8 xmax: 454455 ymax: 537152
+#> CRS:            4326
+#> Warning in st_is_longlat(x): bounding box has potentially an invalid value range
+#> for longlat data
+#> # A tibble: 1 x 11
+#>                        geom OBJECTID LAD20CD LAD20NM LAD20NMW  BNG_E  BNG_N
+#>               <POLYGON [°]>  <int64> <chr>   <chr>   <chr>    <int6> <int6>
+#> 1 ((448973.6 536745.3, 448…        1 E06000… Hartle… <NA>     447160 531474
+#> # … with 4 more variables: LONG <dbl>, LAT <dbl>, Shape__Are <dbl>,
+#> #   Shape__Len <dbl>
+```
+
+## make\_sf()
+
+This function provides an easy shorthand to take any dataframe with
+coordinate columns, and convert it into a simple feature object. The
+inputs to this function are the data frame or tibble, the x and y column
+names, both as strings, and the coordinate system number. Coordinate
+reference system codes can be found at <https://spatialreference.org/>.
+This mostly serves as a wrapped to sf::st\_as\_sf(), but the defaults
+for this are set as latitude and longitude. Columns containing the
+string “lon” or “lat” in any case being used as the x\_colname and
+y\_colname respectively, and the coordinate reference system set to
+4326. If multiple columns contain these strings, the function will
+return the data frame unchanged and produce an error message prompting
+you to specify the column names manually.
+
+``` r
+make_sf(
+       data=data.frame(
+          "Longitude"=c(1,2,3),
+          "Latitude"=c(51,52,53)
+          ),
+       x_colname="Longitude",
+       y_colname="Latitude",
+       crs=4326
+    )
+#> Simple feature collection with 3 features and 0 fields
+#> geometry type:  POINT
+#> dimension:      XY
+#> bbox:           xmin: 1 ymin: 51 xmax: 3 ymax: 53
+#> CRS:            EPSG:4326
+#>       geometry
+#> 1 POINT (1 51)
+#> 2 POINT (2 52)
+#> 3 POINT (3 53)
+
+make_sf(
+       data=data.frame(
+          "Longitude"=c(1,2,3),
+          "Latitude"=c(51,52,53)
+          )
+    )
+#> Simple feature collection with 3 features and 0 fields
+#> geometry type:  POINT
+#> dimension:      XY
+#> bbox:           xmin: 1 ymin: 51 xmax: 3 ymax: 53
+#> CRS:            EPSG:4326
+#>       geometry
+#> 1 POINT (1 51)
+#> 2 POINT (2 52)
+#> 3 POINT (3 53)
+
+make_sf(
+      data=data.frame(
+        "Longitude_1"=c(1,2,3),
+        "Longitude_2"=c(11,12,14),
+        "Latitude"=c(51,52,53)
+      )
+    )
+#> Error: Multiple columns contain 'lon', please specify the x_colname.
+#>   Longitude_1 Longitude_2 Latitude
+#> 1           1          11       51
+#> 2           2          12       52
+#> 3           3          14       53
+```

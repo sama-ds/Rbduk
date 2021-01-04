@@ -214,3 +214,50 @@ bduk_bq(
     )
 
 ```
+
+## geojson_to_sf()
+
+Data in BigQuery is frequently stored in geojson format. This function provides a cimple shorthand to input a data frame or tibble that contains a geojson column (eg. a table read from BigQuery) as easily convert it to a simple feature. The inputs to this function are the data frame or tibble, and the column name of the geojson column as a string.
+
+``` {r geojson_to_sf}
+bq_table<-bduk_bq(
+          sql="SELECT * FROM dcms-datalake-staging.GEO_ONS.shp_LA LIMIT 1" ,
+          project="dcms-datalake-staging",
+          keypath="/home/dcms/keys")
+
+geojson_to_sf(
+        data=bq_table,
+        geojson_colname = "geom"
+      )
+```
+
+## make_sf()
+
+This function provides an easy shorthand to take any dataframe with coordinate columns, and convert it into a simple feature object. The inputs to this function are the data frame or tibble, the x and y column names, both as strings, and the coordinate system number. Coordinate reference system codes can be found at [https://spatialreference.org/](https://spatialreference.org/). This mostly serves as a wrapped to sf::st_as_sf(), but the defaults for this are set as latitude and longitude. Columns containing the string "lon" or "lat" in any case being used as the x_colname and y_colname respectively, and the coordinate reference system set to 4326. If multiple columns contain these strings, the function will return the data frame unchanged and produce an error message prompting you to specify the column names manually.
+
+``` {r make_sf}
+make_sf(
+       data=data.frame(
+          "Longitude"=c(1,2,3),
+          "Latitude"=c(51,52,53)
+          ),
+       x_colname="Longitude",
+       y_colname="Latitude",
+       crs=4326
+    )
+
+make_sf(
+       data=data.frame(
+          "Longitude"=c(1,2,3),
+          "Latitude"=c(51,52,53)
+          )
+    )
+
+make_sf(
+      data=data.frame(
+        "Longitude_1"=c(1,2,3),
+        "Longitude_2"=c(11,12,14),
+        "Latitude"=c(51,52,53)
+      )
+    )
+```
