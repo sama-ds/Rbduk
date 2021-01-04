@@ -261,3 +261,46 @@ make_sf(
       )
     )
 ```
+
+## clearGroups()
+
+A function to clear all groups from a leaflet object from within a shiny application. The prevents having to run `clearGroup("groupname")` for every group. The input to this is the name of the map, and then the groups wanting to be cleared as comma seperated strings.
+
+```
+library(shiny)
+library(leaflet)
+library(dplyr)
+
+points_1<-data.frame("lng"=c(-2,-1,0),"lat"=c(51,52,53))
+points_2<-data.frame("lng"=c(-2.1,-1.1,-0.1),"lat"=c(51,52,53))
+
+ui<-fluidPage(
+  fluidRow(
+    actionButton("addgroups", "Add Groups"),
+    actionButton("cleargroups", "Clear Groups"),
+    leafletOutput("mymap")
+  )
+)
+
+server<-function(input,output,session){
+
+  output$mymap <- renderLeaflet({
+    leaflet(options = leafletOptions(preferCanvas = TRUE)) %>%
+      addTiles(options = tileOptions(opacity = 0.8), group = "Open Street Map") %>%
+      setView(lng = -1, lat = 52, zoom = 7)
+  })
+
+  observeEvent(input$addgroups,{
+    leafletProxy("mymap")%>%
+      addCircles(data=points_1,lng=~lng,lat=~lat,color="Red",group="Group 1") %>%
+      addCircles(data=points_2,lng=~lng,lat=~lat,color="Blue",group="Group 2")
+  })
+
+  observeEvent(input$cleargroups,{
+    clearGroups(map="mymap","Group 1","Group 2")
+  })
+}
+
+shinyApp(ui, server)
+```
+
