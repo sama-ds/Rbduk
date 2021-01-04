@@ -26,7 +26,9 @@ radioTooltip(
 \item{trigger}{What action should cause the popover to appear? (\code{hover},
 \code{focus}, \code{click}, or \code{manual}). Defaults to \code{"hover"}.}
 
-\item{options}{A named list of additional options to be set on the popover.}
+\item{options}{A named list of additional options to be set on the popover.
+
+See README for example usage.}
 }
 \description{
 Tooltip that only applies a pop up tooltip to specific selections of a shiny radio button.

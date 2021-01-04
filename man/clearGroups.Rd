@@ -9,7 +9,8 @@ clearGroups(map, ...)
 \arguments{
 \item{map}{a string containing the name of the map}
 
-\item{...}{a comma seperated set of strings that contain the group names to clear}
+\item{...}{a comma seperated set of strings that contain the group names to clear
+See README for example useage.}
 }
 \description{
 Function to clear all groups from a leaflet object from within a shiny application.
