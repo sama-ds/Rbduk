@@ -293,7 +293,7 @@ bduk_bq(
 #> There is no json key saved in this directory. Please copy the file 'dcms-datalake-staging_bigquery.json' into the project or directory you are working within. The file can likely be found in ~/home/keys. If you have not made this folder, please contact the BDUK data and modelling team for additional support.
 ```
 
-## Spatial function
+## Spatial functions
 
 ### geojson\_to\_sf()
 

@@ -227,7 +227,7 @@ bduk_bq(
 
 ```
 
-## Spatial function
+## Spatial functions
 
 ### geojson_to_sf()
 
