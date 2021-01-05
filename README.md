@@ -20,18 +20,13 @@ Source Repository, we have to do this manually:
 1)  Within your VM, go to the ‘Files’ pane (next to ‘Plots’,‘Packages’,
     etc) and navigate to to the home directory by clicking the house
     symbol.\!
-    ![HomeButton](https://source.cloud.google.com/dcms-datalake-staging/Rbduk/+/master:InstructionPics/HomeButton.PNG)
 2)  Within the same pane, click the upload button.
-    ![UploadButton](https://source.cloud.google.com/dcms-datalake-staging/Rbduk/+/master:InstructionPics/UploadButton.PNG).
 3)  Select “Choose File”, navigate to the T:// drive, and select the
     file **Rbduk.tar.gz**.
-    ![ChooseFile](https://source.cloud.google.com/dcms-datalake-staging/Rbduk/+/master:InstructionPics/ChooseFile.PNG)
 4)  Within the console pane, enter
     `install.packages("dplyr","stringr","grid","ggplot2","bigrquery","geojsonsf","sf","shinyBS")`
     to install the packages dependencies.
-    ![Console](https://source.cloud.google.com/dcms-datalake-staging/Rbduk/+/master:InstructionPics/Console.PNG)
 5)  Open the terminal tab (next to the console tab) within Rstudio.
-    ![Terminal](https://source.cloud.google.com/dcms-datalake-staging/Rbduk/+/master:InstructionPics/Terminal.PNG)
 6)  Type `cd /home/dcms` and press enter.
 7)  Type `R CMD INSTALL Rbduk.taz.gz` and press enter.
 
