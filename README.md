@@ -21,8 +21,9 @@ Source Repository, we have to do this manually:
     `setwd("/home/dcms")` in the console.
 2)  Within your VM, go to the “Files” pane and click upload.
 3)  Navigate to the T:// drive, and select the file **Rbduk.tar.gz**.
-4)  Open the terminal tab (next to the console tab) and run `R CMD
-    INSTALL Rbduk.taz.gz`.
+4)  Open the terminal tab (next to the console tab) within Rstudio.
+5)  Type `cd /home/dcms` and press enter.
+6)  Type `R CMD INSTALL Rbduk.taz.gz` and press enter.
 
 The package should now be installed, and to load it use `library(Rbduk)`
 as you would any other package.
