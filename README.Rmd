@@ -34,7 +34,7 @@ Ordinarily, a package would be installed either from a communal file store, or f
 4) Within the console pane, enter `install.packages("dplyr","stringr","grid","ggplot2","bigrquery","geojsonsf","sf","shinyBS")` to install the packages dependencies. 
 5) Open the terminal tab (next to the console tab) within Rstudio.
 6) Type `cd /home/dcms` and press enter.
-7) Type `R CMD INSTALL Rbduk.taz.gz` and press enter.
+7) Type `R CMD INSTALL Rbduk.tar.gz` and press enter.
 
 The package should now be installed, and to load it use `library(Rbduk)` as you would any other package.
 

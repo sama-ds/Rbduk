@@ -32,7 +32,7 @@ Source Repository, we have to do this manually:
     to install the packages dependencies.
 5)  Open the terminal tab (next to the console tab) within Rstudio.
 6)  Type `cd /home/dcms` and press enter.
-7)  Type `R CMD INSTALL Rbduk.taz.gz` and press enter.
+7)  Type `R CMD INSTALL Rbduk.tar.gz` and press enter.
 
 The package should now be installed, and to load it use `library(Rbduk)`
 as you would any other package.
