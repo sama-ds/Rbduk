@@ -22,7 +22,11 @@ Source Repository, we have to do this manually:
     symbol.\!
 2)  Within the same pane, click the upload button.
 3)  Select “Choose File”, navigate to the T:// drive, and select the
-    file **Rbduk.tar.gz**.
+    file **Rbduk.tar.gz**. If you do not have access to the T:// drive,
+    visit it is also stored on the [Data and Modelling team’s google
+    drive](https://drive.google.com/drive/folders/1N760JFNMWoFAmhH3ivhkyrrYx882t2E5).
+    Download the file to your computer from here, and upload in the same
+    fashion.
 4)  Within the console pane, enter
     `install.packages("dplyr","stringr","grid","ggplot2","bigrquery","geojsonsf","sf","shinyBS")`
     to install the packages dependencies.
