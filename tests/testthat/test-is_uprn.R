@@ -50,3 +50,9 @@ test_that("Spaces return false", {
   expect_equal(is_uprn("111 999"), FALSE)
 })
 
+test_that("Conversion error message occurs", {
+  expect_message(
+    is_uprn("1000000"),
+    "UPRN ends in '0000'. This may be invalid caused by an excel conversation from scientific notation."
+  )
+})
