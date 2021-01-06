@@ -42,6 +42,7 @@ For any additional support, to contribute, or to suggest things you would like t
 
 **Do not push any code into the repository unless it has been quality assured first.**
 
+For full doccumentations of all functions in the package please read the [vignette]()
 ## General functions
 
 ### is_integer64()

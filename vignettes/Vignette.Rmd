@@ -1,6 +1,8 @@
 ---
 title: "Rbduk"
-output: rmarkdown::html_vignette
+output: 
+  rmarkdown::html_vignette: default
+  github_document: default
 vignette: >
   %\VignetteIndexEntry{Rbduk}
   %\VignetteEngine{knitr::rmarkdown}
@@ -16,17 +18,10 @@ library(Rbduk)
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
-  fig.path = "man/figures/README-",
+  fig.path = "man/figures/Vignette-",
   out.width = "100%"
 )
 ```
-
-# Rbduk
-
-<!-- badges: start -->
-<!-- badges: end -->
-
-The goal of Rbduk is to provide BDUK analysts with a centralised set of repeatable functions for BDUK-specific R work.
 
 ## General functions
 

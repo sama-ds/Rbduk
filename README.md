@@ -44,7 +44,8 @@ would like to see, please contact
 **Do not push any code into the repository unless it has been quality
 assured first.**
 
-## General functions
+For full doccumentations of all functions in the package please read the
+[vignette]() \#\# General functions
 
 ### is\_integer64()
 
@@ -264,6 +265,10 @@ bduk_bq(
       sql=sql,
       project="dcms-datalake-staging"
     )
+#> Complete
+#> Billed: 0 B
+#> Downloading 1 rows in 1 pages.
+#> Parsing [======================================================================] ETA:  0s                                                                                         
 #> # A tibble: 1 x 2
 #>   pcds  Rurality
 #>   <chr> <chr>   
@@ -274,6 +279,10 @@ bduk_bq(
       project="dcms-datalake-staging",
       key="dcms-datalake-staging_bigquery.json"
     )
+#> Complete
+#> Billed: 0 B
+#> Downloading 1 rows in 1 pages.
+#> Parsing [======================================================================] ETA:  0s                                                                                         
 #> # A tibble: 1 x 2
 #>   pcds  Rurality
 #>   <chr> <chr>   
@@ -284,6 +293,10 @@ bduk_bq(
       project="dcms-datalake-staging",
       keypath="/home/dcms/keys"
     )
+#> Complete
+#> Billed: 0 B
+#> Downloading 1 rows in 1 pages.
+#> Parsing [======================================================================] ETA:  0s                                                                                         
 #> # A tibble: 1 x 2
 #>   pcds  Rurality
 #>   <chr> <chr>   
@@ -318,6 +331,10 @@ bq_table<-bduk_bq(
           sql="SELECT * FROM dcms-datalake-staging.GEO_ONS.shp_LA LIMIT 1" ,
           project="dcms-datalake-staging",
           keypath="/home/dcms/keys")
+#> Complete
+#> Billed: 0 B
+#> Downloading 1 rows in 1 pages.
+#> Parsing [======================================================================] ETA:  0s                                                                                         
 
 geojson_to_sf(
         data=bq_table,
@@ -328,14 +345,13 @@ geojson_to_sf(
 #> dimension:      XY
 #> bbox:           xmin: 440052.7 ymin: 525456.8 xmax: 454455 ymax: 537152
 #> CRS:            4326
-#> Warning in st_is_longlat(x): bounding box has potentially an invalid value range
-#> for longlat data
+#> Warning in st_is_longlat(x): bounding box has potentially an invalid value range for
+#> longlat data
 #> # A tibble: 1 x 11
-#>                        geom OBJECTID LAD20CD LAD20NM LAD20NMW  BNG_E  BNG_N
-#>               <POLYGON [°]>  <int64> <chr>   <chr>   <chr>    <int6> <int6>
-#> 1 ((448973.6 536745.3, 448…        1 E06000… Hartle… <NA>     447160 531474
-#> # … with 4 more variables: LONG <dbl>, LAT <dbl>, Shape__Are <dbl>,
-#> #   Shape__Len <dbl>
+#>                        geom OBJECTID LAD20CD LAD20NM LAD20NMW  BNG_E  BNG_N  LONG   LAT
+#>               <POLYGON [°]>  <int64> <chr>   <chr>   <chr>    <int6> <int6> <dbl> <dbl>
+#> 1 ((448973.6 536745.3, 448…        1 E06000… Hartle… <NA>     447160 531474 -1.27  54.7
+#> # … with 2 more variables: Shape__Are <dbl>, Shape__Len <dbl>
 ```
 
 ### make\_sf()
