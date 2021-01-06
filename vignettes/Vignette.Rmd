@@ -266,7 +266,7 @@ make_sf(
 
 A function to clear all groups from a leaflet object from within a shiny application. The prevents having to run `clearGroup("groupname")` for every group. The input to this is the name of the map, and then the groups wanting to be cleared as comma seperated strings.
 
-```
+```{r eval=FALSE}
 library(shiny)
 library(leaflet)
 library(dplyr)
@@ -308,7 +308,7 @@ shinyApp(ui, server)
 
 By default, shiny and shinyBS together allow us to add popup tooltips to shiny buttons and input fields. However, this tooltip will apply to all parts of the input fiels. For radio buttons and groups of checkboxes, this can be problematic. This function allows us to add a tooltip to specific parts of a radio button.
 
-```
+```{r eval=FALSE}
 library(shiny)
 library(leaflet)
 library(dplyr)

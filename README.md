@@ -12,7 +12,7 @@ repeatable functions for BDUK-specific R work.
 
 For full doccumentations of all functions in the package please read the
 [vignette](https://source.cloud.google.com/dcms-datalake-staging/Rbduk/+/master:vignettes/Vignette.md)
-or run `vignettes("Vignette",package="Rbduk")` to view it within R.
+or run `vignette("Vignette",package="Rbduk")` to view it within R.
 
 ## Installation
 

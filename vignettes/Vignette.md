@@ -611,75 +611,74 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <div id="cleargroups" class="section level3">
 <h3>clearGroups()</h3>
 <p>A function to clear all groups from a leaflet object from within a shiny application. The prevents having to run <code>clearGroup(&quot;groupname&quot;)</code> for every group. The input to this is the name of the map, and then the groups wanting to be cleared as comma seperated strings.</p>
-<pre><code>library(shiny)
-library(leaflet)
-library(dplyr)
-
-points_1&lt;-data.frame(&quot;lng&quot;=c(-2,-1,0),&quot;lat&quot;=c(51,52,53))
-points_2&lt;-data.frame(&quot;lng&quot;=c(-2.1,-1.1,-0.1),&quot;lat&quot;=c(51,52,53))
-
-ui&lt;-fluidPage(
-  fluidRow(
-    actionButton(&quot;addgroups&quot;, &quot;Add Groups&quot;),
-    actionButton(&quot;cleargroups&quot;, &quot;Clear Groups&quot;),
-    leafletOutput(&quot;mymap&quot;)
-  )
-)
-
-server&lt;-function(input,output,session){
-
-  output$mymap &lt;- renderLeaflet({
-    leaflet(options = leafletOptions(preferCanvas = TRUE)) %&gt;%
-      addTiles(options = tileOptions(opacity = 0.8), group = &quot;Open Street Map&quot;) %&gt;%
-      setView(lng = -1, lat = 52, zoom = 7)
-  })
-
-  observeEvent(input$addgroups,{
-    leafletProxy(&quot;mymap&quot;)%&gt;%
-      addCircles(data=points_1,lng=~lng,lat=~lat,color=&quot;Red&quot;,group=&quot;Group 1&quot;) %&gt;%
-      addCircles(data=points_2,lng=~lng,lat=~lat,color=&quot;Blue&quot;,group=&quot;Group 2&quot;)
-  })
-
-  observeEvent(input$cleargroups,{
-    clearGroups(map=&quot;mymap&quot;,&quot;Group 1&quot;,&quot;Group 2&quot;)
-  })
-}
-
-shinyApp(ui, server)</code></pre>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1"><span class="kw">library</span>(shiny)</a>
+<a class="sourceLine" id="cb14-2" data-line-number="2"><span class="kw">library</span>(leaflet)</a>
+<a class="sourceLine" id="cb14-3" data-line-number="3"><span class="kw">library</span>(dplyr)</a>
+<a class="sourceLine" id="cb14-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb14-5" data-line-number="5">points_<span class="dv">1</span>&lt;-<span class="kw">data.frame</span>(<span class="st">&quot;lng&quot;</span>=<span class="kw">c</span>(<span class="op">-</span><span class="dv">2</span>,<span class="op">-</span><span class="dv">1</span>,<span class="dv">0</span>),<span class="st">&quot;lat&quot;</span>=<span class="kw">c</span>(<span class="dv">51</span>,<span class="dv">52</span>,<span class="dv">53</span>))</a>
+<a class="sourceLine" id="cb14-6" data-line-number="6">points_<span class="dv">2</span>&lt;-<span class="kw">data.frame</span>(<span class="st">&quot;lng&quot;</span>=<span class="kw">c</span>(<span class="op">-</span><span class="fl">2.1</span>,<span class="op">-</span><span class="fl">1.1</span>,<span class="op">-</span><span class="fl">0.1</span>),<span class="st">&quot;lat&quot;</span>=<span class="kw">c</span>(<span class="dv">51</span>,<span class="dv">52</span>,<span class="dv">53</span>))</a>
+<a class="sourceLine" id="cb14-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb14-8" data-line-number="8">ui&lt;-<span class="kw">fluidPage</span>(</a>
+<a class="sourceLine" id="cb14-9" data-line-number="9">  <span class="kw">fluidRow</span>(</a>
+<a class="sourceLine" id="cb14-10" data-line-number="10">    <span class="kw">actionButton</span>(<span class="st">&quot;addgroups&quot;</span>, <span class="st">&quot;Add Groups&quot;</span>),</a>
+<a class="sourceLine" id="cb14-11" data-line-number="11">    <span class="kw">actionButton</span>(<span class="st">&quot;cleargroups&quot;</span>, <span class="st">&quot;Clear Groups&quot;</span>),</a>
+<a class="sourceLine" id="cb14-12" data-line-number="12">    <span class="kw">leafletOutput</span>(<span class="st">&quot;mymap&quot;</span>)</a>
+<a class="sourceLine" id="cb14-13" data-line-number="13">  )</a>
+<a class="sourceLine" id="cb14-14" data-line-number="14">)</a>
+<a class="sourceLine" id="cb14-15" data-line-number="15"></a>
+<a class="sourceLine" id="cb14-16" data-line-number="16">server&lt;-<span class="cf">function</span>(input,output,session){</a>
+<a class="sourceLine" id="cb14-17" data-line-number="17"></a>
+<a class="sourceLine" id="cb14-18" data-line-number="18">  output<span class="op">$</span>mymap &lt;-<span class="st"> </span><span class="kw">renderLeaflet</span>({</a>
+<a class="sourceLine" id="cb14-19" data-line-number="19">    <span class="kw">leaflet</span>(<span class="dt">options =</span> <span class="kw">leafletOptions</span>(<span class="dt">preferCanvas =</span> <span class="ot">TRUE</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb14-20" data-line-number="20"><span class="st">      </span><span class="kw">addTiles</span>(<span class="dt">options =</span> <span class="kw">tileOptions</span>(<span class="dt">opacity =</span> <span class="fl">0.8</span>), <span class="dt">group =</span> <span class="st">&quot;Open Street Map&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb14-21" data-line-number="21"><span class="st">      </span><span class="kw">setView</span>(<span class="dt">lng =</span> <span class="dv">-1</span>, <span class="dt">lat =</span> <span class="dv">52</span>, <span class="dt">zoom =</span> <span class="dv">7</span>)</a>
+<a class="sourceLine" id="cb14-22" data-line-number="22">  })</a>
+<a class="sourceLine" id="cb14-23" data-line-number="23"></a>
+<a class="sourceLine" id="cb14-24" data-line-number="24">  <span class="kw">observeEvent</span>(input<span class="op">$</span>addgroups,{</a>
+<a class="sourceLine" id="cb14-25" data-line-number="25">    <span class="kw">leafletProxy</span>(<span class="st">&quot;mymap&quot;</span>)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb14-26" data-line-number="26"><span class="st">      </span><span class="kw">addCircles</span>(<span class="dt">data=</span>points_<span class="dv">1</span>,<span class="dt">lng=</span><span class="op">~</span>lng,<span class="dt">lat=</span><span class="op">~</span>lat,<span class="dt">color=</span><span class="st">&quot;Red&quot;</span>,<span class="dt">group=</span><span class="st">&quot;Group 1&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb14-27" data-line-number="27"><span class="st">      </span><span class="kw">addCircles</span>(<span class="dt">data=</span>points_<span class="dv">2</span>,<span class="dt">lng=</span><span class="op">~</span>lng,<span class="dt">lat=</span><span class="op">~</span>lat,<span class="dt">color=</span><span class="st">&quot;Blue&quot;</span>,<span class="dt">group=</span><span class="st">&quot;Group 2&quot;</span>)</a>
+<a class="sourceLine" id="cb14-28" data-line-number="28">  })</a>
+<a class="sourceLine" id="cb14-29" data-line-number="29"></a>
+<a class="sourceLine" id="cb14-30" data-line-number="30">  <span class="kw">observeEvent</span>(input<span class="op">$</span>cleargroups,{</a>
+<a class="sourceLine" id="cb14-31" data-line-number="31">    <span class="kw">clearGroups</span>(<span class="dt">map=</span><span class="st">&quot;mymap&quot;</span>,<span class="st">&quot;Group 1&quot;</span>,<span class="st">&quot;Group 2&quot;</span>)</a>
+<a class="sourceLine" id="cb14-32" data-line-number="32">  })</a>
+<a class="sourceLine" id="cb14-33" data-line-number="33">}</a>
+<a class="sourceLine" id="cb14-34" data-line-number="34"></a>
+<a class="sourceLine" id="cb14-35" data-line-number="35"><span class="kw">shinyApp</span>(ui, server)</a></code></pre></div>
 </div>
 <div id="radiotooltip" class="section level3">
 <h3>radioTooltip()</h3>
 <p>By default, shiny and shinyBS together allow us to add popup tooltips to shiny buttons and input fields. However, this tooltip will apply to all parts of the input fiels. For radio buttons and groups of checkboxes, this can be problematic. This function allows us to add a tooltip to specific parts of a radio button.</p>
-<pre><code>library(shiny)
-library(leaflet)
-library(dplyr)
-
-ui&lt;-fluidPage(
-  fluidRow(
-    radioButtons(
-      &quot;radio&quot;,
-      &quot;Radio Button&quot;,
-      choices=c(&quot;Tooltip shows on mouseover here&quot;,
-                &quot;Tooltip shows on mouseover here as well&quot;,
-                &quot;Tooltip does not show on mouseover here&quot;)
-                ),
-    radioTooltip(
-      id=&quot;radio&quot;,
-      title=&quot;Tooltip message appears like this&quot;,
-      choice=c(
-        &quot;Tooltip shows on mouseover here&quot;,
-        &quot;Tooltip shows on mouseover here as well&quot;
-      ),
-      placement=&quot;right&quot;,
-      trigger=&quot;hover&quot;
-    )
-  )
-)
-
-server&lt;-function(input,output,session){}
-
-shinyApp(ui, server)
-</code></pre>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1"><span class="kw">library</span>(shiny)</a>
+<a class="sourceLine" id="cb15-2" data-line-number="2"><span class="kw">library</span>(leaflet)</a>
+<a class="sourceLine" id="cb15-3" data-line-number="3"><span class="kw">library</span>(dplyr)</a>
+<a class="sourceLine" id="cb15-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb15-5" data-line-number="5">ui&lt;-<span class="kw">fluidPage</span>(</a>
+<a class="sourceLine" id="cb15-6" data-line-number="6">  <span class="kw">fluidRow</span>(</a>
+<a class="sourceLine" id="cb15-7" data-line-number="7">    <span class="kw">radioButtons</span>(</a>
+<a class="sourceLine" id="cb15-8" data-line-number="8">      <span class="st">&quot;radio&quot;</span>,</a>
+<a class="sourceLine" id="cb15-9" data-line-number="9">      <span class="st">&quot;Radio Button&quot;</span>,</a>
+<a class="sourceLine" id="cb15-10" data-line-number="10">      <span class="dt">choices=</span><span class="kw">c</span>(<span class="st">&quot;Tooltip shows on mouseover here&quot;</span>,</a>
+<a class="sourceLine" id="cb15-11" data-line-number="11">                <span class="st">&quot;Tooltip shows on mouseover here as well&quot;</span>,</a>
+<a class="sourceLine" id="cb15-12" data-line-number="12">                <span class="st">&quot;Tooltip does not show on mouseover here&quot;</span>)</a>
+<a class="sourceLine" id="cb15-13" data-line-number="13">                ),</a>
+<a class="sourceLine" id="cb15-14" data-line-number="14">    <span class="kw">radioTooltip</span>(</a>
+<a class="sourceLine" id="cb15-15" data-line-number="15">      <span class="dt">id=</span><span class="st">&quot;radio&quot;</span>,</a>
+<a class="sourceLine" id="cb15-16" data-line-number="16">      <span class="dt">title=</span><span class="st">&quot;Tooltip message appears like this&quot;</span>,</a>
+<a class="sourceLine" id="cb15-17" data-line-number="17">      <span class="dt">choice=</span><span class="kw">c</span>(</a>
+<a class="sourceLine" id="cb15-18" data-line-number="18">        <span class="st">&quot;Tooltip shows on mouseover here&quot;</span>,</a>
+<a class="sourceLine" id="cb15-19" data-line-number="19">        <span class="st">&quot;Tooltip shows on mouseover here as well&quot;</span></a>
+<a class="sourceLine" id="cb15-20" data-line-number="20">      ),</a>
+<a class="sourceLine" id="cb15-21" data-line-number="21">      <span class="dt">placement=</span><span class="st">&quot;right&quot;</span>,</a>
+<a class="sourceLine" id="cb15-22" data-line-number="22">      <span class="dt">trigger=</span><span class="st">&quot;hover&quot;</span></a>
+<a class="sourceLine" id="cb15-23" data-line-number="23">    )</a>
+<a class="sourceLine" id="cb15-24" data-line-number="24">  )</a>
+<a class="sourceLine" id="cb15-25" data-line-number="25">)</a>
+<a class="sourceLine" id="cb15-26" data-line-number="26"></a>
+<a class="sourceLine" id="cb15-27" data-line-number="27">server&lt;-<span class="cf">function</span>(input,output,session){}</a>
+<a class="sourceLine" id="cb15-28" data-line-number="28"></a>
+<a class="sourceLine" id="cb15-29" data-line-number="29"><span class="kw">shinyApp</span>(ui, server)</a></code></pre></div>
 </div>
 </div>
 
