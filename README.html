@@ -608,6 +608,7 @@ body {
 <!-- badges: end -->
 
 <p>The goal of Rbduk is to provide BDUK analysts with a centralised set of repeatable functions for BDUK-specific R work.</p>
+<p>For full doccumentations of all functions in the package please read the <a href="https://source.cloud.google.com/dcms-datalake-staging/Rbduk/+/master:vignettes/Vignette.md">vignette</a>.</p>
 <h2 id="installation">Installation</h2>
 <p>Ordinarily, a package would be installed either from a communal file store, or from a git repository. As our VM’s do not connect to the T:// drive that we share, and packages cannot be installed from a Google Source Repository, we have to do this manually:</p>
 <ol>
@@ -622,7 +623,7 @@ body {
 <p>The package should now be installed, and to load it use <code>library(Rbduk)</code> as you would any other package.</p>
 <p>For any additional support, to contribute, or to suggest things you would like to see, please contact <a href="sam.atkin@dcms.gov.uk">sam.atkin@dcms.gov.uk</a>.</p>
 <p><strong>Do not push any code into the repository unless it has been quality assured first.</strong></p>
-<p>For full doccumentations of all functions in the package please read the <a href>vignette</a> ## General functions</p>
+<h2 id="general-functions">General functions</h2>
 <h3 id="is_integer64()">is_integer64()</h3>
 <p>Within GCP, large numbers (eg UPRNs) are stored are 64-bit integers. R, on the whole, does not like 64-bit integer, and whilst it can cope, it’s easier to read in these columns are numeric, or convert them to numeric within R. To see if an object is currently a 64-bit integer, this function can be used.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">is_integer64</span>(<span class="dv">100</span>)</a>
@@ -769,7 +770,7 @@ body {
 <a class="sourceLine" id="cb10-9" data-line-number="9"><span class="co">#&gt; Complete</span></a>
 <a class="sourceLine" id="cb10-10" data-line-number="10"><span class="co">#&gt; Billed: 0 B</span></a>
 <a class="sourceLine" id="cb10-11" data-line-number="11"><span class="co">#&gt; Downloading 1 rows in 1 pages.</span></a>
-<a class="sourceLine" id="cb10-12" data-line-number="12"><span class="co">#&gt; Parsing [======================================================================] ETA:  0s                                                                                         </span></a>
+<a class="sourceLine" id="cb10-12" data-line-number="12"><span class="co">#&gt; Parsing [=======================================================================================================================] ETA:  0s                                                                                                                                          </span></a>
 <a class="sourceLine" id="cb10-13" data-line-number="13"><span class="co">#&gt; # A tibble: 1 x 2</span></a>
 <a class="sourceLine" id="cb10-14" data-line-number="14"><span class="co">#&gt;   pcds  Rurality</span></a>
 <a class="sourceLine" id="cb10-15" data-line-number="15"><span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt;   </span></a>
@@ -783,7 +784,7 @@ body {
 <a class="sourceLine" id="cb10-23" data-line-number="23"><span class="co">#&gt; Complete</span></a>
 <a class="sourceLine" id="cb10-24" data-line-number="24"><span class="co">#&gt; Billed: 0 B</span></a>
 <a class="sourceLine" id="cb10-25" data-line-number="25"><span class="co">#&gt; Downloading 1 rows in 1 pages.</span></a>
-<a class="sourceLine" id="cb10-26" data-line-number="26"><span class="co">#&gt; Parsing [======================================================================] ETA:  0s                                                                                         </span></a>
+<a class="sourceLine" id="cb10-26" data-line-number="26"><span class="co">#&gt; Parsing [=======================================================================================================================] ETA:  0s                                                                                                                                          </span></a>
 <a class="sourceLine" id="cb10-27" data-line-number="27"><span class="co">#&gt; # A tibble: 1 x 2</span></a>
 <a class="sourceLine" id="cb10-28" data-line-number="28"><span class="co">#&gt;   pcds  Rurality</span></a>
 <a class="sourceLine" id="cb10-29" data-line-number="29"><span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt;   </span></a>
@@ -797,7 +798,7 @@ body {
 <a class="sourceLine" id="cb10-37" data-line-number="37"><span class="co">#&gt; Complete</span></a>
 <a class="sourceLine" id="cb10-38" data-line-number="38"><span class="co">#&gt; Billed: 0 B</span></a>
 <a class="sourceLine" id="cb10-39" data-line-number="39"><span class="co">#&gt; Downloading 1 rows in 1 pages.</span></a>
-<a class="sourceLine" id="cb10-40" data-line-number="40"><span class="co">#&gt; Parsing [======================================================================] ETA:  0s                                                                                         </span></a>
+<a class="sourceLine" id="cb10-40" data-line-number="40"><span class="co">#&gt; Parsing [=======================================================================================================================] ETA:  0s                                                                                                                                          </span></a>
 <a class="sourceLine" id="cb10-41" data-line-number="41"><span class="co">#&gt; # A tibble: 1 x 2</span></a>
 <a class="sourceLine" id="cb10-42" data-line-number="42"><span class="co">#&gt;   pcds  Rurality</span></a>
 <a class="sourceLine" id="cb10-43" data-line-number="43"><span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt;   </span></a>
@@ -822,7 +823,7 @@ body {
 <a class="sourceLine" id="cb12-5" data-line-number="5"><span class="co">#&gt; Complete</span></a>
 <a class="sourceLine" id="cb12-6" data-line-number="6"><span class="co">#&gt; Billed: 0 B</span></a>
 <a class="sourceLine" id="cb12-7" data-line-number="7"><span class="co">#&gt; Downloading 1 rows in 1 pages.</span></a>
-<a class="sourceLine" id="cb12-8" data-line-number="8"><span class="co">#&gt; Parsing [======================================================================] ETA:  0s                                                                                         </span></a>
+<a class="sourceLine" id="cb12-8" data-line-number="8"><span class="co">#&gt; Parsing [=======================================================================================================================] ETA:  0s                                                                                                                                          </span></a>
 <a class="sourceLine" id="cb12-9" data-line-number="9"></a>
 <a class="sourceLine" id="cb12-10" data-line-number="10"><span class="kw">geojson_to_sf</span>(</a>
 <a class="sourceLine" id="cb12-11" data-line-number="11">        <span class="dt">data=</span>bq_table,</a>
@@ -833,13 +834,11 @@ body {
 <a class="sourceLine" id="cb12-16" data-line-number="16"><span class="co">#&gt; dimension:      XY</span></a>
 <a class="sourceLine" id="cb12-17" data-line-number="17"><span class="co">#&gt; bbox:           xmin: 440052.7 ymin: 525456.8 xmax: 454455 ymax: 537152</span></a>
 <a class="sourceLine" id="cb12-18" data-line-number="18"><span class="co">#&gt; CRS:            4326</span></a>
-<a class="sourceLine" id="cb12-19" data-line-number="19"><span class="co">#&gt; Warning in st_is_longlat(x): bounding box has potentially an invalid value range for</span></a>
-<a class="sourceLine" id="cb12-20" data-line-number="20"><span class="co">#&gt; longlat data</span></a>
-<a class="sourceLine" id="cb12-21" data-line-number="21"><span class="co">#&gt; # A tibble: 1 x 11</span></a>
-<a class="sourceLine" id="cb12-22" data-line-number="22"><span class="co">#&gt;                        geom OBJECTID LAD20CD LAD20NM LAD20NMW  BNG_E  BNG_N  LONG   LAT</span></a>
-<a class="sourceLine" id="cb12-23" data-line-number="23"><span class="co">#&gt;               &lt;POLYGON [°]&gt;  &lt;int64&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;    &lt;int6&gt; &lt;int6&gt; &lt;dbl&gt; &lt;dbl&gt;</span></a>
-<a class="sourceLine" id="cb12-24" data-line-number="24"><span class="co">#&gt; 1 ((448973.6 536745.3, 448…        1 E06000… Hartle… &lt;NA&gt;     447160 531474 -1.27  54.7</span></a>
-<a class="sourceLine" id="cb12-25" data-line-number="25"><span class="co">#&gt; # … with 2 more variables: Shape__Are &lt;dbl&gt;, Shape__Len &lt;dbl&gt;</span></a></code></pre></div>
+<a class="sourceLine" id="cb12-19" data-line-number="19"><span class="co">#&gt; Warning in st_is_longlat(x): bounding box has potentially an invalid value range for longlat data</span></a>
+<a class="sourceLine" id="cb12-20" data-line-number="20"><span class="co">#&gt; # A tibble: 1 x 11</span></a>
+<a class="sourceLine" id="cb12-21" data-line-number="21"><span class="co">#&gt;                                                     geom OBJECTID LAD20CD  LAD20NM  LAD20NMW  BNG_E  BNG_N  LONG   LAT Shape__Are Shape__Len</span></a>
+<a class="sourceLine" id="cb12-22" data-line-number="22"><span class="co">#&gt;                                            &lt;POLYGON [°]&gt;  &lt;int64&gt; &lt;chr&gt;    &lt;chr&gt;    &lt;chr&gt;    &lt;int6&gt; &lt;int6&gt; &lt;dbl&gt; &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;</span></a>
+<a class="sourceLine" id="cb12-23" data-line-number="23"><span class="co">#&gt; 1 ((448973.6 536745.3, 448986 536729.7, 453194.6 533938…        1 E060000… Hartlep… &lt;NA&gt;     447160 531474 -1.27  54.7  96607269.     50738.</span></a></code></pre></div>
 <h3 id="make_sf()">make_sf()</h3>
 <p>This function provides an easy shorthand to take any dataframe with coordinate columns, and convert it into a simple feature object. The inputs to this function are the data frame or tibble, the x and y column names, both as strings, and the coordinate system number. Coordinate reference system codes can be found at <a href="https://spatialreference.org/">https://spatialreference.org/</a>. This mostly serves as a wrapped to sf::st_as_sf(), but the defaults for this are set as latitude and longitude. Columns containing the string “lon” or “lat” in any case being used as the x_colname and y_colname respectively, and the coordinate reference system set to 4326. If multiple columns contain these strings, the function will return the data frame unchanged and produce an error message prompting you to specify the column names manually.</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1"><span class="kw">make_sf</span>(</a>

@@ -10,6 +10,9 @@
 The goal of Rbduk is to provide BDUK analysts with a centralised set of
 repeatable functions for BDUK-specific R work.
 
+For full doccumentations of all functions in the package please read the
+[vignette](https://source.cloud.google.com/dcms-datalake-staging/Rbduk/+/master:vignettes/Vignette.md).
+
 ## Installation
 
 Ordinarily, a package would be installed either from a communal file
@@ -44,8 +47,7 @@ would like to see, please contact
 **Do not push any code into the repository unless it has been quality
 assured first.**
 
-For full doccumentations of all functions in the package please read the
-[vignette]() \#\# General functions
+## General functions
 
 ### is\_integer64()
 
@@ -268,7 +270,7 @@ bduk_bq(
 #> Complete
 #> Billed: 0 B
 #> Downloading 1 rows in 1 pages.
-#> Parsing [======================================================================] ETA:  0s                                                                                         
+#> Parsing [=======================================================================================================================] ETA:  0s                                                                                                                                          
 #> # A tibble: 1 x 2
 #>   pcds  Rurality
 #>   <chr> <chr>   
@@ -282,7 +284,7 @@ bduk_bq(
 #> Complete
 #> Billed: 0 B
 #> Downloading 1 rows in 1 pages.
-#> Parsing [======================================================================] ETA:  0s                                                                                         
+#> Parsing [=======================================================================================================================] ETA:  0s                                                                                                                                          
 #> # A tibble: 1 x 2
 #>   pcds  Rurality
 #>   <chr> <chr>   
@@ -296,7 +298,7 @@ bduk_bq(
 #> Complete
 #> Billed: 0 B
 #> Downloading 1 rows in 1 pages.
-#> Parsing [======================================================================] ETA:  0s                                                                                         
+#> Parsing [=======================================================================================================================] ETA:  0s                                                                                                                                          
 #> # A tibble: 1 x 2
 #>   pcds  Rurality
 #>   <chr> <chr>   
@@ -334,7 +336,7 @@ bq_table<-bduk_bq(
 #> Complete
 #> Billed: 0 B
 #> Downloading 1 rows in 1 pages.
-#> Parsing [======================================================================] ETA:  0s                                                                                         
+#> Parsing [=======================================================================================================================] ETA:  0s                                                                                                                                          
 
 geojson_to_sf(
         data=bq_table,
@@ -345,13 +347,11 @@ geojson_to_sf(
 #> dimension:      XY
 #> bbox:           xmin: 440052.7 ymin: 525456.8 xmax: 454455 ymax: 537152
 #> CRS:            4326
-#> Warning in st_is_longlat(x): bounding box has potentially an invalid value range for
-#> longlat data
+#> Warning in st_is_longlat(x): bounding box has potentially an invalid value range for longlat data
 #> # A tibble: 1 x 11
-#>                        geom OBJECTID LAD20CD LAD20NM LAD20NMW  BNG_E  BNG_N  LONG   LAT
-#>               <POLYGON [°]>  <int64> <chr>   <chr>   <chr>    <int6> <int6> <dbl> <dbl>
-#> 1 ((448973.6 536745.3, 448…        1 E06000… Hartle… <NA>     447160 531474 -1.27  54.7
-#> # … with 2 more variables: Shape__Are <dbl>, Shape__Len <dbl>
+#>                                                     geom OBJECTID LAD20CD  LAD20NM  LAD20NMW  BNG_E  BNG_N  LONG   LAT Shape__Are Shape__Len
+#>                                            <POLYGON [°]>  <int64> <chr>    <chr>    <chr>    <int6> <int6> <dbl> <dbl>      <dbl>      <dbl>
+#> 1 ((448973.6 536745.3, 448986 536729.7, 453194.6 533938…        1 E060000… Hartlep… <NA>     447160 531474 -1.27  54.7  96607269.     50738.
 ```
 
 ### make\_sf()
