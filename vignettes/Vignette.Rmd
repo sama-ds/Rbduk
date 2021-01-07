@@ -164,7 +164,7 @@ These functions serve the same purpose, and that is to give a more readable vers
 
 all.equal(2 %!in% c(1,3), 2 %notin% c(1,3), !2 %in% c(1,3))
 
-all.equal("b" %!in% c("a","c"), "b" %notin% c("a","c"), !"b" %!in% c("a","c"))
+all.equal("b" %!in% c("a","c"), "b" %notin% c("a","c"), !"b" %in% c("a","c"))
 
 ```
 

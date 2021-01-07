@@ -452,7 +452,7 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <a class="sourceLine" id="cb9-2" data-line-number="2"><span class="kw">all.equal</span>(<span class="dv">2</span> <span class="op">%!in%</span><span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">3</span>), <span class="dv">2</span> <span class="op">%notin%</span><span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">3</span>), <span class="op">!</span><span class="dv">2</span> <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">3</span>))</a>
 <a class="sourceLine" id="cb9-3" data-line-number="3"><span class="co">#&gt; [1] TRUE</span></a>
 <a class="sourceLine" id="cb9-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb9-5" data-line-number="5"><span class="kw">all.equal</span>(<span class="st">&quot;b&quot;</span> <span class="op">%!in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;a&quot;</span>,<span class="st">&quot;c&quot;</span>), <span class="st">&quot;b&quot;</span> <span class="op">%notin%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;a&quot;</span>,<span class="st">&quot;c&quot;</span>), <span class="op">!</span><span class="st">&quot;b&quot;</span> <span class="op">%!in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;a&quot;</span>,<span class="st">&quot;c&quot;</span>))</a>
+<a class="sourceLine" id="cb9-5" data-line-number="5"><span class="kw">all.equal</span>(<span class="st">&quot;b&quot;</span> <span class="op">%!in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;a&quot;</span>,<span class="st">&quot;c&quot;</span>), <span class="st">&quot;b&quot;</span> <span class="op">%notin%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;a&quot;</span>,<span class="st">&quot;c&quot;</span>), <span class="op">!</span><span class="st">&quot;b&quot;</span> <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;a&quot;</span>,<span class="st">&quot;c&quot;</span>))</a>
 <a class="sourceLine" id="cb9-6" data-line-number="6"><span class="co">#&gt; [1] TRUE</span></a></code></pre></div>
 </div>
 </div>
@@ -473,8 +473,8 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <a class="sourceLine" id="cb10-10" data-line-number="10"><span class="co">#&gt; Billed: 0 B</span></a>
 <a class="sourceLine" id="cb10-11" data-line-number="11"><span class="co">#&gt; Downloading 1 rows in 1 pages.</span></a>
 <a class="sourceLine" id="cb10-12" data-line-number="12"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb10-13" data-line-number="13">Parsing [<span class="op">==</span><span class="er">=====================================================================================================================</span>] ETA<span class="op">:</span><span class="st">  </span>0s</a>
-<a class="sourceLine" id="cb10-14" data-line-number="14">                                                                                                                                          </a>
+<a class="sourceLine" id="cb10-13" data-line-number="13">Parsing [<span class="op">==</span><span class="er">====================================================================</span>] ETA<span class="op">:</span><span class="st">  </span>0s</a>
+<a class="sourceLine" id="cb10-14" data-line-number="14">                                                                                         </a>
 <a class="sourceLine" id="cb10-15" data-line-number="15"><span class="co">#&gt; # A tibble: 1 x 2</span></a>
 <a class="sourceLine" id="cb10-16" data-line-number="16"><span class="co">#&gt;   pcds  Rurality</span></a>
 <a class="sourceLine" id="cb10-17" data-line-number="17"><span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt;   </span></a>
@@ -489,8 +489,8 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <a class="sourceLine" id="cb10-26" data-line-number="26"><span class="co">#&gt; Billed: 0 B</span></a>
 <a class="sourceLine" id="cb10-27" data-line-number="27"><span class="co">#&gt; Downloading 1 rows in 1 pages.</span></a>
 <a class="sourceLine" id="cb10-28" data-line-number="28"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb10-29" data-line-number="29">Parsing [<span class="op">==</span><span class="er">=====================================================================================================================</span>] ETA<span class="op">:</span><span class="st">  </span>0s</a>
-<a class="sourceLine" id="cb10-30" data-line-number="30">                                                                                                                                          </a>
+<a class="sourceLine" id="cb10-29" data-line-number="29">Parsing [<span class="op">==</span><span class="er">====================================================================</span>] ETA<span class="op">:</span><span class="st">  </span>0s</a>
+<a class="sourceLine" id="cb10-30" data-line-number="30">                                                                                         </a>
 <a class="sourceLine" id="cb10-31" data-line-number="31"><span class="co">#&gt; # A tibble: 1 x 2</span></a>
 <a class="sourceLine" id="cb10-32" data-line-number="32"><span class="co">#&gt;   pcds  Rurality</span></a>
 <a class="sourceLine" id="cb10-33" data-line-number="33"><span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt;   </span></a>
@@ -505,8 +505,8 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <a class="sourceLine" id="cb10-42" data-line-number="42"><span class="co">#&gt; Billed: 0 B</span></a>
 <a class="sourceLine" id="cb10-43" data-line-number="43"><span class="co">#&gt; Downloading 1 rows in 1 pages.</span></a>
 <a class="sourceLine" id="cb10-44" data-line-number="44"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb10-45" data-line-number="45">Parsing [<span class="op">==</span><span class="er">=====================================================================================================================</span>] ETA<span class="op">:</span><span class="st">  </span>0s</a>
-<a class="sourceLine" id="cb10-46" data-line-number="46">                                                                                                                                          </a>
+<a class="sourceLine" id="cb10-45" data-line-number="45">Parsing [<span class="op">==</span><span class="er">====================================================================</span>] ETA<span class="op">:</span><span class="st">  </span>0s</a>
+<a class="sourceLine" id="cb10-46" data-line-number="46">                                                                                         </a>
 <a class="sourceLine" id="cb10-47" data-line-number="47"><span class="co">#&gt; # A tibble: 1 x 2</span></a>
 <a class="sourceLine" id="cb10-48" data-line-number="48"><span class="co">#&gt;   pcds  Rurality</span></a>
 <a class="sourceLine" id="cb10-49" data-line-number="49"><span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt;   </span></a>
@@ -536,8 +536,8 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <a class="sourceLine" id="cb12-6" data-line-number="6"><span class="co">#&gt; Billed: 0 B</span></a>
 <a class="sourceLine" id="cb12-7" data-line-number="7"><span class="co">#&gt; Downloading 1 rows in 1 pages.</span></a>
 <a class="sourceLine" id="cb12-8" data-line-number="8"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb12-9" data-line-number="9">Parsing [<span class="op">==</span><span class="er">=====================================================================================================================</span>] ETA<span class="op">:</span><span class="st">  </span>0s</a>
-<a class="sourceLine" id="cb12-10" data-line-number="10">                                                                                                                                          </a>
+<a class="sourceLine" id="cb12-9" data-line-number="9">Parsing [<span class="op">==</span><span class="er">====================================================================</span>] ETA<span class="op">:</span><span class="st">  </span>0s</a>
+<a class="sourceLine" id="cb12-10" data-line-number="10">                                                                                         </a>
 <a class="sourceLine" id="cb12-11" data-line-number="11"></a>
 <a class="sourceLine" id="cb12-12" data-line-number="12"><span class="kw">geojson_to_sf</span>(</a>
 <a class="sourceLine" id="cb12-13" data-line-number="13">        <span class="dt">data=</span>bq_table,</a>
@@ -548,11 +548,13 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <a class="sourceLine" id="cb12-18" data-line-number="18"><span class="co">#&gt; dimension:      XY</span></a>
 <a class="sourceLine" id="cb12-19" data-line-number="19"><span class="co">#&gt; bbox:           xmin: 440052.7 ymin: 525456.8 xmax: 454455 ymax: 537152</span></a>
 <a class="sourceLine" id="cb12-20" data-line-number="20"><span class="co">#&gt; CRS:            4326</span></a>
-<a class="sourceLine" id="cb12-21" data-line-number="21"><span class="co">#&gt; Warning in st_is_longlat(x): bounding box has potentially an invalid value range for longlat data</span></a>
-<a class="sourceLine" id="cb12-22" data-line-number="22"><span class="co">#&gt; # A tibble: 1 x 11</span></a>
-<a class="sourceLine" id="cb12-23" data-line-number="23"><span class="co">#&gt;                                                     geom OBJECTID LAD20CD  LAD20NM  LAD20NMW  BNG_E  BNG_N  LONG   LAT Shape__Are Shape__Len</span></a>
-<a class="sourceLine" id="cb12-24" data-line-number="24"><span class="co">#&gt;                                            &lt;POLYGON [°]&gt;  &lt;int64&gt; &lt;chr&gt;    &lt;chr&gt;    &lt;chr&gt;    &lt;int6&gt; &lt;int6&gt; &lt;dbl&gt; &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;</span></a>
-<a class="sourceLine" id="cb12-25" data-line-number="25"><span class="co">#&gt; 1 ((448973.6 536745.3, 448986 536729.7, 453194.6 533938…        1 E060000… Hartlep… &lt;NA&gt;     447160 531474 -1.27  54.7  96607269.     50738.</span></a></code></pre></div>
+<a class="sourceLine" id="cb12-21" data-line-number="21"><span class="co">#&gt; Warning in st_is_longlat(x): bounding box has potentially an invalid value range for</span></a>
+<a class="sourceLine" id="cb12-22" data-line-number="22"><span class="co">#&gt; longlat data</span></a>
+<a class="sourceLine" id="cb12-23" data-line-number="23"><span class="co">#&gt; # A tibble: 1 x 11</span></a>
+<a class="sourceLine" id="cb12-24" data-line-number="24"><span class="co">#&gt;                        geom OBJECTID LAD20CD LAD20NM LAD20NMW  BNG_E  BNG_N  LONG   LAT</span></a>
+<a class="sourceLine" id="cb12-25" data-line-number="25"><span class="co">#&gt;               &lt;POLYGON [°]&gt;  &lt;int64&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;    &lt;int6&gt; &lt;int6&gt; &lt;dbl&gt; &lt;dbl&gt;</span></a>
+<a class="sourceLine" id="cb12-26" data-line-number="26"><span class="co">#&gt; 1 ((448973.6 536745.3, 448…        1 E06000… Hartle… &lt;NA&gt;     447160 531474 -1.27  54.7</span></a>
+<a class="sourceLine" id="cb12-27" data-line-number="27"><span class="co">#&gt; # … with 2 more variables: Shape__Are &lt;dbl&gt;, Shape__Len &lt;dbl&gt;</span></a></code></pre></div>
 </div>
 <div id="make_sf" class="section level3">
 <h3>make_sf()</h3>
