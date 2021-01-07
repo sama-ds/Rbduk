@@ -15,8 +15,7 @@ RoxygenNote: 7.1.1
 Suggests: 
     testthat,
     covr,
-    knitr,
-    rmarkdown
+    knitr
 Imports: 
     dplyr,
     stringr,
@@ -25,5 +24,6 @@ Imports:
     bigrquery,
     geojsonsf,
     sf,
-    shinyBS
+    shinyBS,
+    rmarkdown
 VignetteBuilder: knitr

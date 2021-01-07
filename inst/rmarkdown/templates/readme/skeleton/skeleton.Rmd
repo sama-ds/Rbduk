@@ -1,0 +1,56 @@
+---
+title: "README"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# INSERT TITLE OF WORK HERE
+
+**Author:** INSERT NAME
+**Comissioned by:** INSERT NAME
+**Date Created:** INSERT DATE
+
+This is an R Markdown format used for publishing markdown documents to Google Cloud Repos When you click the **Knit** button all R code chunks are run and a markdown file (.md) suitable for publishing to Google Cloud Repos is generated. 
+
+### Purpose 
+
+Add description detailing what the work and/or product within this repository is meant to achieve.
+
+If applicable, include a [link](URL GOES HERE) to the product.
+
+### Files
+
+List the files within this repository as well as their purpose. eg:
+
+- packages.R- A directory containing the packages needed to run this shiny app.
+- functions.R- The functions used within this shiny app.
+- app.R- The UI and Server functions on the shiny app
+
+### How to run
+
+Write a description of how to run this peice of work. eg:
+
+1) Pull the repository onto your machine
+2) Run the packages.R file
+3) Run the app.R file
+
+### Additional information/doccumentation
+
+Include any additional information pertianing to this directory. For examples, links to other doccuments that affected this work, resources used, etc.
+
+### Data sources
+
+Includes links to data sources and dates when they were taken here. If the data source is BigQuery, the data sources will be available from the code.
+
+#### Future changes
+
+Keep a list of future changes that are to be implemented if the work is not complete.
+
+### Known Bugs
+
+If applicable, store a list of known bugs here, so that anyone else working on this can be in the loop.
+
+

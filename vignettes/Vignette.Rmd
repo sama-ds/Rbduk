@@ -25,6 +25,20 @@ knitr::opts_chunk$set(
 
 ## General functions
 
+### readme()
+
+All R projects produced should have their files stored within a **Google Cloud Repository** to allow for source control, easier collaboration, and to maintain best practices. When comitting these project to a repository, you should include a README file that details key information about the project for anyone who wants to find out more or has to contribute to the project. 
+
+This function creates a template README.Rmd file within the current working directory detailing what sohuld be included within this. This function will initially open a popup window, which the doccument can be editted within, but it is recommended you simply click save and then edit the file directly. 
+
+Once the README file has been created, it should be 'Knitted' by either clicking the 'Knit' button within Rstudio, or using `rmarkdown::knit()`. Once this has been done, another file, README.md (a markdown output) will be generated. Ensure to commit both the README.Rmd and the README.md files to your repository.
+
+If you are unfamiliar with GIT, or need help setting up GIT on your machine, view a collection of git resources [here]().
+
+```{r eval=FALSE}
+readme()
+```
+
 ### is_integer64()
 
 Within GCP, large numbers (eg UPRNs) are stored are 64-bit integers. R, on the whole, does not like 64-bit integer, and whilst it can cope, it's easier to read in these columns are numeric, or convert them to numeric within R. To see if an object is currently a 64-bit integer, this function can be used.
