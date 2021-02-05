@@ -27,5 +27,6 @@ Imports:
     shinyBS,
     rmarkdown,
     shiny,
-    leaflet
+    leaflet,
+    remotes
 VignetteBuilder: knitr
