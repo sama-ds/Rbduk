@@ -50,9 +50,26 @@ test_that("Spaces return false", {
   expect_equal(is_uprn("111 999"), FALSE)
 })
 
-test_that("Conversion error message occurs", {
+test_that("Conversion error message occurs singular", {
   expect_message(
     is_uprn("1000000"),
-    "UPRN ends in '0000'. This may be invalid caused by an excel conversation from scientific notation."
+    "UPRN ends in '0000'. This may be caused by a conversion error involving excel and scientific notation."
+  )
+})
+
+test_that("Conversion error message occurs plural", {
+  expect_message(
+    is_uprn(c("1000000","200000","30000")),
+    "3 UPRNs end in '0000'. This may be caused by a conversion error involving excel and scientific notation."
+  )
+})
+
+test_that("Works with dplyr", {
+  expect_equal(
+    dplyr::mutate(
+      data.frame(uprn=c("100","200x","x.o")),
+      is_uprn=is_uprn(uprn)),
+    data.frame(uprn=c("100","200x","x.o"),
+               is_uprn=c(TRUE,FALSE,FALSE))
   )
 })

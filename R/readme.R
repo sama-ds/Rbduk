@@ -2,8 +2,6 @@
 #'
 #' @return README.Rmd document.
 #' @export
-#' @examples
-#' readme()
 #'
 readme<-function(){
   rmarkdown::draft("README.Rmd",template="readme",package="Rbduk")

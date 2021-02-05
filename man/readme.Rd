@@ -12,7 +12,3 @@ README.Rmd document.
 \description{
 Shorthand to create a README file using the template stored within this package.
 }
-\examples{
-readme()
-
-}

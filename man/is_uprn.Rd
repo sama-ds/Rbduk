@@ -4,7 +4,7 @@
 \alias{is_uprn}
 \title{Function to check is either a numeric or character variable is in the format of a valid UPRN, and not not contain any letters or punctuation. This function will faill if a numeric with a decimal followed by solely zeros is entered.}
 \usage{
-is_uprn(UPRN)
+is_uprn(uprns)
 }
 \arguments{
 \item{string}{to be checked.}

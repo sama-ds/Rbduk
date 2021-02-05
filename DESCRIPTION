@@ -25,5 +25,7 @@ Imports:
     geojsonsf,
     sf,
     shinyBS,
-    rmarkdown
+    rmarkdown,
+    shiny,
+    leaflet
 VignetteBuilder: knitr
