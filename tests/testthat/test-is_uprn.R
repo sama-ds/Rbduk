@@ -73,3 +73,11 @@ test_that("Works with dplyr", {
                is_uprn=c(TRUE,FALSE,FALSE))
   )
 })
+
+test_that("allow_scientific functions",{
+  expect_equal(
+    is_uprn(c("1000000","200000","30000"), allow_scientific = FALSE),
+    c(FALSE, FALSE, FALSE)
+  )
+})
+

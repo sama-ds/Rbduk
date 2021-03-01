@@ -9,21 +9,26 @@
 #' is_uprn("1")
 #' is_uprn("999999999999")
 
-is_uprn <- function(uprns) {
+is_uprn <- function(uprns, allow_scientific=TRUE) {
   options(scipen = 999)
   results<-c()
   n_zeros<-0
   for(uprn in uprns){
+    scientific_flag=0
     UPRN_num <- suppressWarnings(as.numeric(uprn))
     if (!is.na(UPRN_num)) {
       if (stringr::str_sub(UPRN_num, start = -4) == "0000") {
         n_zeros<-n_zeros+1
+        if(allow_scientific==FALSE){
+          scientific_flag=1
+        }
       }
       results<-c(results,
-                 is.numeric(UPRN_num) &
-                 nchar(UPRN_num) <= 12 &
-                 nchar(UPRN_num) > 0 &
-                 !grepl('[^[:alnum:]]', UPRN_num))
+                 scientific_flag==0 &
+                   is.numeric(UPRN_num) &
+                   nchar(UPRN_num) <= 12 &
+                   nchar(UPRN_num) > 0 &
+                   !grepl('[^[:alnum:]]', UPRN_num))
     } else { results<-c(results,FALSE) }
   }
   if(n_zeros==1){

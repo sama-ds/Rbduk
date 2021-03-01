@@ -101,7 +101,7 @@ is_postcode("XXXXXX")
 
 ### is_uprn()
 
-This function takes a numeric or character vector and returns TRUE or FALSE depedent on whether it is in a valid UPRN format (all numeric, between 1 and 12 characters). It will also flag as a message any UPRNs that end 0000, as a common conversion error caused by scientific notation and reading/writing from excel can cause genuine UPRNs to end in a number of zeros, meaning they are no longer genuine. One or two of these messages is acceptable, but many indicates that this error has occured and that the UPRNs should be checked thoroughly.
+This function takes a numeric or character vector and returns TRUE or FALSE dependent on whether it is in a valid UPRN format (all numeric, between 1 and 12 characters). It will also flag as a message any UPRNs that end 0000, as a common conversion error caused by scientific notation and reading/writing from excel can cause genuine UPRNs to end in a number of zeros, meaning they are no longer genuine. One or two of these messages is acceptable, but many indicates that this error has occurred and that the UPRNs should be checked thoroughly. The function can be set to allow this with `allow_scientific=TRUE` (by default), but this can be disabled, and all UPRNs ending in 0000 will return false.
 
 The following demonstrates valid and invalid UPRNs:
 
@@ -143,6 +143,12 @@ is_uprn("111-999")
 
 #Contains punctuation
 is_uprn("111 999")
+
+#Flag scientific numbering errors, but return them as true.
+is_uprn("100000")
+
+#Flag scientific numbering errors, but return them as false.
+is_uprn("100000")
 
 ```
 
