@@ -148,7 +148,7 @@ is_uprn("111 999")
 is_uprn("100000")
 
 #Flag scientific numbering errors, but return them as false.
-is_uprn("100000")
+is_uprn("100000", allow_scientific=FALSE)
 
 ```
 

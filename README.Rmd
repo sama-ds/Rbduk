@@ -24,7 +24,7 @@ knitr::opts_chunk$set(
 
 The goal of Rbduk is to provide BDUK analysts with a centralised set of repeatable functions for BDUK-specific R work.
 
-For full doccumentations of all functions in the package please read the [vignette](https://source.cloud.google.com/dcms-datalake-staging/Rbduk/+/master:vignettes/Vignette.md) or run `vignette("Vignette",package="Rbduk")` to view it within R.
+For full doccumentations of all functions in the package please read the [vignette](https://github.com/SamA-DS/Rbduk/blob/main/vignettes/Vignette.md) or run `vignette("Vignette",package="Rbduk")` to view it within R.
 
 ## Installation
 
